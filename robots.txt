@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://lucasound22.github.io/DJLUCA/sitemap.xml
+
+# DJ Luca - Melbourne Vinyl DJ since 2002
