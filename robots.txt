@@ -1,4 +1,3 @@
 User-agent: *
 Allow: /
-
 Sitemap: https://lucasound22.github.io/DJLUCA/sitemap.xml
