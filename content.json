@@ -1,9 +1,9 @@
 {
   "copy": {
     "heroBadge": "MELBOURNE DJ • AVAILABLE FOR BOOKING",
-    "heroTagline": "VINYL ONLY • HOUSE • DISCO • FUNK • DUB • EDITS | C-MOOG • SWINGING SAFARI • FRENCH CONNECTION",
-    "bioHeading": "FOR THE ROOM NOT THE ALGORITHM",
-    "bioParagraph": "Melbourne vinyl-only selector. House, disco, funk, dub and edits cut for the floor. Resident at C-Moog, Swinging Safari, French Connection. Housekeeping Records founder. No sync, no laptop, no grey boxes — just wax, room tone, and a tight room. Available for DJ bookings across Melbourne and nationally — weddings, parties, clubs and private events.",
+    "heroTagline": "VINYL ONLY • HOUSE • DISCO • FUNK • DUB • EDITS | C-MOOG • TFU • FRENCH CONNECTION",
+    "bioHeading": "FOR THE FLOOR",
+    "bioParagraph": "Melbourne vinyl-only selector. House, disco, funk, dub and edits cut for the floor. Resident at C-Moog, TFU, French Connection. Housekeeping Records founder. No sync, no laptop, no grey boxes — just wax, room tone, and a tight room. Available for DJ bookings across Melbourne and nationally — weddings, parties, clubs and private events.",
     "bookingTagline": "Melbourne based • Available for National bookings • Vinyl • House • Disco • Dub"
   },
   "mixes": [
@@ -52,5 +52,6 @@
       "title": "STARGAZING",
       "desc": "Late night • Cosmic • Ambient house"
     }
-  ]
+  ],
+  "gallery": []
 }
