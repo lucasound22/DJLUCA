@@ -1,0 +1,56 @@
+{
+  "copy": {
+    "heroBadge": "MELBOURNE DJ • AVAILABLE FOR BOOKING",
+    "heroTagline": "VINYL ONLY • HOUSE • DISCO • FUNK • DUB • EDITS | C-MOOG • SWINGING SAFARI • FRENCH CONNECTION",
+    "bioHeading": "FOR THE ROOM NOT THE ALGORITHM",
+    "bioParagraph": "Melbourne vinyl-only selector. House, disco, funk, dub and edits cut for the floor. Resident at C-Moog, Swinging Safari, French Connection. Housekeeping Records founder. No sync, no laptop, no grey boxes — just wax, room tone, and a tight room. Available for DJ bookings across Melbourne and nationally — weddings, parties, clubs and private events.",
+    "bookingTagline": "Melbourne based • Available for National bookings • Vinyl • House • Disco • Dub"
+  },
+  "mixes": [
+    {
+      "slug": "soundboy-dubnbass-mix",
+      "title": "SOUNDBOY DUB N BASS MIX",
+      "desc": "Heavy sub pressure • Jungle breaks • 2024"
+    },
+    {
+      "slug": "dispersion-diversion",
+      "title": "DISPERSION DIVERSION",
+      "desc": "Deep house • Hypnotic • Vinyl only"
+    },
+    {
+      "slug": "housequake",
+      "title": "HOUSEQUAKE",
+      "desc": "Jackin house • 124 BPM • Warehouse vibes"
+    },
+    {
+      "slug": "dip-dip-dive",
+      "title": "DIP DIP DIVE",
+      "desc": "Disco dips • Funk edits • Poolside"
+    },
+    {
+      "slug": "offbeat-pastimes-and-groovy-stuff",
+      "title": "OFFBEAT PASTIMES AND GROOVY STUFF",
+      "desc": "Leftfield • Groovy • Eccentric selections"
+    },
+    {
+      "slug": "heavy-dub-bricks",
+      "title": "HEAVY DUB BRICKS",
+      "desc": "Dub • Steppa • Sound system culture"
+    },
+    {
+      "slug": "utopia-planica",
+      "title": "UTOPIA PLANICA",
+      "desc": "Dream house • Balearic • Sunrise set"
+    },
+    {
+      "slug": "unreleased-mix",
+      "title": "UNRELEASED MIX",
+      "desc": "Housekeeping demos • Unreleased heat"
+    },
+    {
+      "slug": "stargazing",
+      "title": "STARGAZING",
+      "desc": "Late night • Cosmic • Ambient house"
+    }
+  ]
+}

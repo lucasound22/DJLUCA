@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DJ Luca Marino — Site Admin</title>
+<meta name="robots" content="noindex, nofollow">
+<style>
+  :root{--cyan:#00F5FF;--bg:#080A0C;--panel:#111417;--line:#1E2226;--text:#fff;--muted:rgba(255,255,255,.6)}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--text);font-family:'Space Grotesk',system-ui,-apple-system,sans-serif;-webkit-font-smoothing:antialiased}
+  .mono{font-family:'IBM Plex Mono',monospace}
+  .wrap{max-width:900px;margin:0 auto;padding:24px 20px 80px}
+  h1{font-size:22px;font-weight:900;letter-spacing:-.01em;margin:0 0 4px}
+  .sub{color:var(--muted);font-size:13px;margin:0 0 24px}
+  .banner{border:1px solid var(--line);background:var(--panel);border-radius:14px;padding:16px 18px;font-size:13px;line-height:1.6;color:var(--muted);margin-bottom:28px}
+  .banner b{color:var(--text)}
+  .banner ol{margin:8px 0 0;padding-left:18px}
+  section.card{border:1px solid var(--line);background:var(--panel);border-radius:16px;padding:20px;margin-bottom:20px}
+  section.card > h2{font-size:14px;letter-spacing:.14em;text-transform:uppercase;margin:0 0 4px;color:var(--cyan)}
+  section.card > p.hint{font-size:12px;color:var(--muted);margin:0 0 16px}
+  label{display:block;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:14px 0 6px}
+  label:first-of-type{margin-top:0}
+  input[type=text], input[type=url], textarea, select{
+    width:100%;background:#0d1013;border:1px solid var(--line);color:var(--text);border-radius:10px;
+    padding:10px 12px;font-size:14px;font-family:inherit;resize:vertical
+  }
+  input:focus, textarea:focus, select:focus{outline:none;border-color:var(--cyan)}
+  textarea{min-height:80px;line-height:1.5}
+  .row{display:flex;gap:10px;flex-wrap:wrap}
+  .row > *{flex:1;min-width:140px}
+  .item{border:1px solid var(--line);border-radius:12px;padding:14px;margin-bottom:12px;position:relative;background:#0d1013}
+  .item-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+  .item-top .idx{font-size:11px;color:var(--muted)}
+  .btn{
+    display:inline-flex;align-items:center;gap:6px;border-radius:999px;padding:9px 16px;font-size:12px;font-weight:700;
+    border:1px solid var(--line);background:transparent;color:var(--text);cursor:pointer;font-family:inherit
+  }
+  .btn:hover{border-color:var(--cyan)}
+  .btn.primary{background:var(--cyan);color:#000;border-color:var(--cyan)}
+  .btn.danger{color:#ff6b6b;border-color:#3a1f1f}
+  .btn.small{padding:5px 11px;font-size:11px}
+  .btn.ghost{border-color:transparent;color:var(--muted)}
+  .actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:8px}
+  .actionbar{position:sticky;bottom:0;background:linear-gradient(180deg,transparent,var(--bg) 30%);padding:20px 0 0;margin-top:8px}
+  .actionbar-inner{display:flex;gap:10px;flex-wrap:wrap;border-top:1px solid var(--line);padding-top:16px}
+  .status{font-size:12px;padding:8px 0;color:var(--muted)}
+  .status.ok{color:var(--cyan)}
+  .status.err{color:#ff6b6b}
+  details{border:1px solid var(--line);background:var(--panel);border-radius:16px;padding:16px 20px;margin-bottom:20px}
+  summary{cursor:pointer;font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+  details[open] summary{color:var(--cyan);margin-bottom:12px}
+  .thumb{width:48px;height:32px;object-fit:cover;border-radius:6px;border:1px solid var(--line);flex:0 0 auto}
+  .item-row{display:flex;gap:10px;align-items:flex-start}
+  .item-row .fields{flex:1;min-width:0}
+  .note{font-size:11px;color:var(--muted);margin-top:4px}
+  a{color:var(--cyan)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>DJ LUCA MARINO — SITE ADMIN</h1>
+  <p class="sub mono">Edit copy, gallery and Mixcloud mixes. Not linked from the public site — bookmark this page.</p>
+
+  <div class="banner">
+    <b>How this works:</b> this site has no server or database, so there's no login and no auto-save to the live site. Edit below, then:
+    <ol>
+      <li><b>Preview</b> — saves a draft to this browser and opens the live site so you can check it before publishing.</li>
+      <li><b>Download content.json</b> — grabs the updated file. Upload it to the root of your <span class="mono">DJLUCA</span> GitHub repo (same folder as <span class="mono">index.html</span>), replacing the old one. The site picks it up automatically, no rebuild needed.</li>
+      <li>Or use <b>Publish to GitHub</b> below to skip the manual upload, if you set up a token.</li>
+    </ol>
+  </div>
+
+  <section class="card">
+    <h2>Site Copy</h2>
+    <p class="hint">The headline strip, bio and booking tagline shown on the page.</p>
+    <label>Hero badge (small pill above the big headline)</label>
+    <input type="text" id="copy_heroBadge">
+    <label>Hero tagline (under the headline)</label>
+    <input type="text" id="copy_heroTagline">
+    <label>Bio heading</label>
+    <input type="text" id="copy_bioHeading">
+    <label>Bio paragraph</label>
+    <textarea id="copy_bioParagraph"></textarea>
+    <label>Booking section tagline</label>
+    <input type="text" id="copy_bookingTagline">
+  </section>
+
+  <section class="card">
+    <h2>Mixcloud Mixes</h2>
+    <p class="hint">Each mix links to <span class="mono">mixcloud.com/House_Keeping/&lt;slug&gt;</span> — the slug must match the URL Mixcloud gives that mix exactly.</p>
+    <div id="mixesList"></div>
+    <div class="actions">
+      <button class="btn" onclick="addMix()">+ Add mix</button>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>Gallery — Images &amp; Videos</h2>
+    <p class="hint">Paste a URL for each item (an already-hosted image, or a direct video file link — kept as plain files, no embeds). Your current 9 photos aren't in this list yet — download links for them are in the chat so you can re-host and re-add any you want to keep.</p>
+    <div id="galleryList"></div>
+    <div class="actions">
+      <button class="btn" onclick="addGalleryItem('image')">+ Add image</button>
+      <button class="btn" onclick="addGalleryItem('video')">+ Add video</button>
+    </div>
+  </section>
+
+  <details>
+    <summary>Publish directly to GitHub (optional)</summary>
+    <p class="hint" style="margin-top:0">
+      Skip the manual upload. Needs a GitHub <a href="https://github.com/settings/tokens?type=beta" target="_blank" rel="noopener">fine-grained personal access token</a>
+      scoped to just this repo with <b>Contents: read and write</b> permission. The token is stored only in this browser (never sent anywhere but api.github.com) — don't share it, and revoke it any time from GitHub settings.
+    </p>
+    <div class="row">
+      <div><label>Repo owner</label><input type="text" id="gh_owner" value="lucasound22"></div>
+      <div><label>Repo name</label><input type="text" id="gh_repo" value="DJLUCA"></div>
+      <div><label>Branch</label><input type="text" id="gh_branch" value="main"></div>
+    </div>
+    <label>File path</label>
+    <input type="text" id="gh_path" value="content.json">
+    <label>Personal access token</label>
+    <input type="text" id="gh_token" placeholder="github_pat_...">
+    <label style="display:flex;align-items:center;gap:8px;text-transform:none;font-size:12px;margin-top:10px">
+      <input type="checkbox" id="gh_remember" style="width:auto"> Remember token in this browser
+    </label>
+    <div class="actions">
+      <button class="btn primary" onclick="publishToGitHub()">Publish to GitHub</button>
+    </div>
+    <div id="ghStatus" class="status"></div>
+  </details>
+
+  <div class="actionbar">
+    <div class="actionbar-inner">
+      <button class="btn" onclick="loadContent()">Reload current</button>
+      <button class="btn" onclick="previewChanges()">Preview</button>
+      <button class="btn primary" onclick="downloadJSON()">Download content.json</button>
+    </div>
+    <div id="mainStatus" class="status"></div>
+  </div>
+</div>
+
+<script>
+const DEFAULTS = {
+  copy: {
+    heroBadge: "MELBOURNE DJ • AVAILABLE FOR BOOKING",
+    heroTagline: "VINYL ONLY • HOUSE • DISCO • FUNK • DUB • EDITS | C-MOOG • SWINGING SAFARI • FRENCH CONNECTION",
+    bioHeading: "FOR THE ROOM NOT THE ALGORITHM",
+    bioParagraph: "Melbourne vinyl-only selector. House, disco, funk, dub and edits cut for the floor. Resident at C-Moog, Swinging Safari, French Connection. Housekeeping Records founder. No sync, no laptop, no grey boxes — just wax, room tone, and a tight room. Available for DJ bookings across Melbourne and nationally — weddings, parties, clubs and private events.",
+    bookingTagline: "Melbourne based • Available for National bookings • Vinyl • House • Disco • Dub"
+  },
+  mixes: [
+    { slug: "soundboy-dubnbass-mix", title: "SOUNDBOY DUB N BASS MIX", desc: "Heavy sub pressure • Jungle breaks • 2024" },
+    { slug: "dispersion-diversion", title: "DISPERSION DIVERSION", desc: "Deep house • Hypnotic • Vinyl only" },
+    { slug: "housequake", title: "HOUSEQUAKE", desc: "Jackin house • 124 BPM • Warehouse vibes" },
+    { slug: "dip-dip-dive", title: "DIP DIP DIVE", desc: "Disco dips • Funk edits • Poolside" },
+    { slug: "offbeat-pastimes-and-groovy-stuff", title: "OFFBEAT PASTIMES AND GROOVY STUFF", desc: "Leftfield • Groovy • Eccentric selections" },
+    { slug: "heavy-dub-bricks", title: "HEAVY DUB BRICKS", desc: "Dub • Steppa • Sound system culture" },
+    { slug: "utopia-planica", title: "UTOPIA PLANICA", desc: "Dream house • Balearic • Sunrise set" },
+    { slug: "unreleased-mix", title: "UNRELEASED MIX", desc: "Housekeeping demos • Unreleased heat" },
+    { slug: "stargazing", title: "STARGAZING", desc: "Late night • Cosmic • Ambient house" }
+  ],
+  gallery: []
+};
+
+let state = JSON.parse(JSON.stringify(DEFAULTS));
+
+function setStatus(el, msg, kind){
+  el.textContent = msg;
+  el.className = "status" + (kind ? " " + kind : "");
+}
+
+function populateCopyFields(){
+  for(const key of Object.keys(DEFAULTS.copy)){
+    const el = document.getElementById("copy_" + key);
+    if(el) el.value = state.copy[key] ?? "";
+  }
+}
+function readCopyFields(){
+  const copy = {};
+  for(const key of Object.keys(DEFAULTS.copy)){
+    const el = document.getElementById("copy_" + key);
+    if(el) copy[key] = el.value;
+  }
+  state.copy = copy;
+}
+
+function renderMixes(){
+  const list = document.getElementById("mixesList");
+  list.innerHTML = "";
+  state.mixes.forEach((mix, i) => {
+    const div = document.createElement("div");
+    div.className = "item";
+    div.innerHTML = `
+      <div class="item-top">
+        <span class="idx mono">MIX ${i+1}</span>
+        <span class="actions" style="margin:0">
+          <button class="btn small ghost" onclick="moveMix(${i},-1)" title="Move up">↑</button>
+          <button class="btn small ghost" onclick="moveMix(${i},1)" title="Move down">↓</button>
+          <button class="btn small danger" onclick="removeMix(${i})">Remove</button>
+        </span>
+      </div>
+      <label>Mixcloud slug</label>
+      <input type="text" class="mono" data-f="slug" value="${escapeAttr(mix.slug)}" placeholder="e.g. housequake">
+      <label>Title</label>
+      <input type="text" data-f="title" value="${escapeAttr(mix.title)}">
+      <label>Description</label>
+      <input type="text" data-f="desc" value="${escapeAttr(mix.desc)}">
+    `;
+    div.querySelectorAll("[data-f]").forEach(inp => {
+      inp.addEventListener("input", () => { state.mixes[i][inp.dataset.f] = inp.value; });
+    });
+    list.appendChild(div);
+  });
+}
+function addMix(){
+  state.mixes.push({ slug: "", title: "", desc: "" });
+  renderMixes();
+}
+function removeMix(i){ state.mixes.splice(i,1); renderMixes(); }
+function moveMix(i, dir){
+  const j = i + dir;
+  if(j < 0 || j >= state.mixes.length) return;
+  [state.mixes[i], state.mixes[j]] = [state.mixes[j], state.mixes[i]];
+  renderMixes();
+}
+
+function renderGallery(){
+  const list = document.getElementById("galleryList");
+  list.innerHTML = "";
+  if(state.gallery.length === 0){
+    list.innerHTML = '<p class="hint" style="margin:0 0 12px">No custom gallery items yet — publishing now will replace the on-site gallery with whatever you add here, so add at least one item before publishing (or leave everything else untouched and skip gallery changes for now).</p>';
+  }
+  state.gallery.forEach((item, i) => {
+    const div = document.createElement("div");
+    div.className = "item";
+    div.innerHTML = `
+      <div class="item-top">
+        <span class="idx mono">${(item.type||"image").toUpperCase()} ${i+1}</span>
+        <span class="actions" style="margin:0">
+          <button class="btn small ghost" onclick="moveGallery(${i},-1)" title="Move up">↑</button>
+          <button class="btn small ghost" onclick="moveGallery(${i},1)" title="Move down">↓</button>
+          <button class="btn small danger" onclick="removeGallery(${i})">Remove</button>
+        </span>
+      </div>
+      <div class="item-row">
+        ${item.type === "video" ? "" : `<img class="thumb" src="${escapeAttr(item.src)}" onerror="this.style.visibility='hidden'">`}
+        <div class="fields">
+          <label>Type</label>
+          <select data-f="type">
+            <option value="image" ${item.type!=="video"?"selected":""}>Image</option>
+            <option value="video" ${item.type==="video"?"selected":""}>Video (direct file URL, e.g. .mp4)</option>
+          </select>
+          <label>URL</label>
+          <input type="url" data-f="src" value="${escapeAttr(item.src)}" placeholder="https://...">
+          <label>Alt text (image) / description (video)</label>
+          <input type="text" data-f="alt" value="${escapeAttr(item.alt)}">
+        </div>
+      </div>
+    `;
+    div.querySelectorAll("[data-f]").forEach(inp => {
+      inp.addEventListener("input", () => {
+        state.gallery[i][inp.dataset.f] = inp.value;
+        if(inp.dataset.f === "type") renderGallery();
+      });
+      inp.addEventListener("change", () => {
+        if(inp.dataset.f === "src") renderGallery();
+      });
+    });
+    list.appendChild(div);
+  });
+}
+function addGalleryItem(type){
+  state.gallery.push({ type, src: "", alt: "" });
+  renderGallery();
+}
+function removeGallery(i){ state.gallery.splice(i,1); renderGallery(); }
+function moveGallery(i, dir){
+  const j = i + dir;
+  if(j < 0 || j >= state.gallery.length) return;
+  [state.gallery[i], state.gallery[j]] = [state.gallery[j], state.gallery[i]];
+  renderGallery();
+}
+
+function escapeAttr(s){
+  return String(s ?? "").replace(/&/g,"&amp;").replace(/"/g,"&quot;").replace(/</g,"&lt;");
+}
+
+function renderAll(){
+  populateCopyFields();
+  renderMixes();
+  renderGallery();
+}
+
+async function loadContent(){
+  const statusEl = document.getElementById("mainStatus");
+  try{
+    const r = await fetch("./content.json", { cache: "no-store" });
+    if(r.ok){
+      const d = await r.json();
+      state = {
+        copy: { ...DEFAULTS.copy, ...(d.copy||{}) },
+        mixes: d.mixes || DEFAULTS.mixes,
+        gallery: d.gallery || []
+      };
+      setStatus(statusEl, "Loaded current content.json.", "ok");
+    } else {
+      state = JSON.parse(JSON.stringify(DEFAULTS));
+      setStatus(statusEl, "No content.json found yet — showing the site's built-in defaults.", "");
+    }
+  } catch(e){
+    state = JSON.parse(JSON.stringify(DEFAULTS));
+    setStatus(statusEl, "Couldn't fetch content.json (probably fine if you're opening this file directly rather than through the live site) — showing defaults.", "");
+  }
+  renderAll();
+}
+
+function previewChanges(){
+  readCopyFields();
+  try{
+    localStorage.setItem("djluca_content_draft", JSON.stringify(state));
+    window.open("./index.html", "_blank");
+    setStatus(document.getElementById("mainStatus"), "Draft saved to this browser — opened the site in a new tab to preview.", "ok");
+  } catch(e){
+    setStatus(document.getElementById("mainStatus"), "Couldn't save a local preview: " + e.message, "err");
+  }
+}
+
+function downloadJSON(){
+  readCopyFields();
+  const blob = new Blob([JSON.stringify(state, null, 2)], { type: "application/json" });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = "content.json";
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+  URL.revokeObjectURL(url);
+  setStatus(document.getElementById("mainStatus"), "Downloaded — upload this to the root of your DJLUCA repo, replacing the old content.json.", "ok");
+}
+
+async function publishToGitHub(){
+  readCopyFields();
+  const owner = document.getElementById("gh_owner").value.trim();
+  const repo = document.getElementById("gh_repo").value.trim();
+  const branch = document.getElementById("gh_branch").value.trim() || "main";
+  const path = document.getElementById("gh_path").value.trim() || "content.json";
+  const token = document.getElementById("gh_token").value.trim();
+  const remember = document.getElementById("gh_remember").checked;
+  const statusEl = document.getElementById("ghStatus");
+
+  if(!owner || !repo || !token){
+    setStatus(statusEl, "Repo owner, repo name and a token are all required.", "err");
+    return;
+  }
+  if(remember) localStorage.setItem("djluca_gh_token", token);
+  else localStorage.removeItem("djluca_gh_token");
+
+  setStatus(statusEl, "Publishing…", "");
+  const apiBase = `https://api.github.com/repos/${owner}/${repo}/contents/${path}`;
+  const headers = {
+    Authorization: `Bearer ${token}`,
+    Accept: "application/vnd.github+json",
+  };
+  try{
+    let sha = undefined;
+    const existing = await fetch(`${apiBase}?ref=${encodeURIComponent(branch)}`, { headers });
+    if(existing.status === 200){
+      const existingJson = await existing.json();
+      sha = existingJson.sha;
+    } else if(existing.status !== 404){
+      const errBody = await existing.text();
+      throw new Error(`Couldn't check existing file (HTTP ${existing.status}): ${errBody.slice(0,200)}`);
+    }
+
+    const content = btoa(unescape(encodeURIComponent(JSON.stringify(state, null, 2))));
+    const putRes = await fetch(apiBase, {
+      method: "PUT",
+      headers: { ...headers, "Content-Type": "application/json" },
+      body: JSON.stringify({
+        message: "Update site content via admin panel",
+        content,
+        branch,
+        ...(sha ? { sha } : {}),
+      }),
+    });
+    if(!putRes.ok){
+      const errBody = await putRes.text();
+      throw new Error(`GitHub rejected the update (HTTP ${putRes.status}): ${errBody.slice(0,300)}`);
+    }
+    setStatus(statusEl, "Published. GitHub Pages usually picks it up within a minute or two.", "ok");
+  } catch(e){
+    setStatus(statusEl, "Failed: " + e.message, "err");
+  }
+}
+
+// on load
+(function init(){
+  const savedToken = localStorage.getItem("djluca_gh_token");
+  if(savedToken){
+    document.getElementById("gh_token").value = savedToken;
+    document.getElementById("gh_remember").checked = true;
+  }
+  loadContent();
+})();
+</script>
+</body>
+</html>
